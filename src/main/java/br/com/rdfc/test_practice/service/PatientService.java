@@ -20,11 +20,10 @@ public class PatientService {
     }
 
     public void save(PatientDto patientDto) {
-        Patient patient = new Patient();
+        Patient patient = patientDto.toPatient();
         if (patientDto.date() == null) {
             patient.setCreationDate(LocalDateTime.now());
         }
-        patient.setExternalId(patientDto.externalId());
         repository.save(patient);
     }
 

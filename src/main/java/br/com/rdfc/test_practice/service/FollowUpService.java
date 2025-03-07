@@ -23,17 +23,13 @@ public class FollowUpService {
     }
 
     public void save(FollowUpDto followUpDto) {
-        FollowUp followUp = new FollowUp();
+        FollowUp followUp = followUpDto.toFollowUp();
 
-        if (followUpDto.date() == null) {
+        if (followUp.getDate() == null) {
             followUp.setDate(LocalDateTime.now());
-        } else {
-            followUp.setDate(followUpDto.date());
         }
 
         Patient patient = patientService.findByExternalId(followUpDto.patientExternalId());
-        followUp.setExternalId(followUpDto.externalId());
-        followUp.setLabel(followUpDto.label());
         followUp.setPatient(patient);
         repository.save(followUp);
     }

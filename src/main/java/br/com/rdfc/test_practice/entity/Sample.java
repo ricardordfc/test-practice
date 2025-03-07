@@ -17,6 +17,16 @@ public class Sample {
     private Type type;
     private String storage;
 
+    public Sample() {
+    }
+
+    public Sample(String externalId, Type type, String storage, LocalDateTime date) {
+        this.externalId = externalId;
+        this.type = type;
+        this.storage = storage;
+        this.date = date;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "ID", columnDefinition = "VARCHAR(255)", insertable = false, updatable = false, nullable = false)

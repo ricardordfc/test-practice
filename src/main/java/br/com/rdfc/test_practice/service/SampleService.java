@@ -23,19 +23,14 @@ public class SampleService {
     }
 
     public void save(SampleDto sampleDto) {
-        Sample sample = new Sample();
+        Sample sample = sampleDto.toSample();
 
-        if (sampleDto.date() == null) {
+        if (sample.getDate() == null) {
             sample.setDate(LocalDateTime.now());
-        } else {
-            sample.setDate(sampleDto.date());
         }
 
         FollowUp followUp = followUpService.findByExternalId(sampleDto.followUpExternalId());
         sample.setFollowUp(followUp);
-        sample.setExternalId(sampleDto.externalId());
-        sample.setType(sampleDto.type());
-        sample.setStorage(sampleDto.storage());
         repository.save(sample);
     }
 

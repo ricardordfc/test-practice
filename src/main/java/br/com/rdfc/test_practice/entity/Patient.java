@@ -16,6 +16,14 @@ public class Patient {
     private LocalDateTime creationDate;
     private List<FollowUp> followUps;
 
+    public Patient() {
+    }
+
+    public Patient(String externalId, LocalDateTime date) {
+        this.externalId = externalId;
+        this.creationDate = date;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "ID", columnDefinition = "VARCHAR(255)", insertable = false, updatable = false, nullable = false)

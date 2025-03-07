@@ -18,6 +18,15 @@ public class FollowUp {
     private Patient patient;
     private List<Sample> samples;
 
+    public FollowUp() {
+    }
+
+    public FollowUp(String externalId, Label label, LocalDateTime date) {
+        this.externalId = externalId;
+        this.label = label;
+        this.date = date;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "ID", columnDefinition = "VARCHAR(255)", insertable = false, updatable = false, nullable = false)
